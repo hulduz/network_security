@@ -1,13 +1,12 @@
-import './App.css'
+import React from 'react';
+import Login from './Components/Login.jsx';
 
-function App() {
-
-
+const App = () => {
   return (
-    <>
-      <p>login</p>
-    </>
-  )
-}
+    <div>
+      <Login />
+    </div>
+  );
+};
 
-export default App
+export default App;
