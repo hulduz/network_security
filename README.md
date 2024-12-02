@@ -1,15 +1,23 @@
-# network_security
+# Capture the Flag Task: Vulnerable Web Server
 
+## 1. Why I Chose This Task
 
-Créer un sous-dossier avec un nom aléatoire et le flag
+We chose this task because it is a classical example of web server vulnerabilities. It shows how simple misconfigurations can lead to attacks.
 
-Créer un fichier de distraction pour induire en erreur
+## 2. Task Overview
 
-Ajouter une protection avec un mot de passe HTTP
+We implemented a Dockerized web server running Apache, with a hidden flag stored in a subdirectory. The access to the flag is protected by a cookie-base authentification, which needs to be bypassed to capture the flag.
 
-Configurer Apache pour protéger le dossier contenant le flag
+## 3. Intended Attack Method
+To capture the flag, follow these steps:
 
-Ajouter un script Python pour introduire un délai sur les requêtes échouées
+1. **Identify the Path to the Flag**:
+   - Scan for hidden directories and files within the server with tools you can use on your bash.
 
-Commande pour lancer Apache et le script Python
+2. **Bypass Cookie-Based Authentication**:
+   - Inspect the web page source and cookies to determine the required cookie for flag access.
+   - Send a request with the necessary cookie header.
+
+3. **Access the Flag**:
+   - If the path is correct and the cookie is valid, the server will respond with the contents of `flag.txt`, revealing the flag.
 
