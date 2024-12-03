@@ -1,30 +1,41 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate(); // Hook de redirection
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
     try {
-      const response = await fetch('http://localhost:4000/api/login', {
+      const response = await fetch('http://localhost:8081/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),
       });
 
-      const data = await response.json();
+      if (!response.ok) {
+        const text = await response.text();
+        console.log('Response body:', text);
+        setError(text || 'Login failed');
+        return;
+      }
 
-      if (response.ok) {
+      const data = await response.json();
+      console.log('Server response:', data); // Ajout du log pour débogage
+
+      if (data.token) {
         alert('Login successful');
-        // Redirect or show user page logic here
+        navigate('/flag'); // Redirection vers la page de flag après connexion réussie
       } else {
         setError(data.message || 'Login failed');
       }
     } catch (err) {
+      console.error('Error:', err);
       setError('Something went wrong. Try again later.');
     }
   };

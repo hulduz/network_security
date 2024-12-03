@@ -1,12 +1,15 @@
 import React from 'react';
-import Login from './Components/Login.jsx';
+import { Routes, Route } from 'react-router-dom';
+import Login from './Components/Login';
+import Flag from './Components/Flag';
 
-const App = () => {
+function App() {
   return (
-    <div>
-      <Login />
-    </div>
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/flag" element={<Flag />} />
+    </Routes>
   );
-};
+}
 
 export default App;
