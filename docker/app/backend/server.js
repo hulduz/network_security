@@ -21,7 +21,7 @@ app.use((req, res, next) => {
   if (req.path === '/set-cookie' || (req.cookies && req.cookies['accessFlag'])) {
     next();
   } else {
-    res.status(403).json({ message: 'Access forbidden. You need the correct cookie to access the flag.' });
+    res.status(403).json({ message: 'Access forbidden. You need the correct cookie to access the flag (try going to /set-cookie path).' });
   }
 });
 
