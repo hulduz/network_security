@@ -12,7 +12,7 @@ app.use(cookieParser());
 // Route pour définir le cookie d'accès
 app.get('/set-cookie', (req, res) => {
   res.cookie('accessFlag', 'secretCookieValue', { httpOnly: true, secure: false }); 
-  res.status(200).send('Cookie set. Access the flag now.');
+  res.status(200).send('Cookie set. Go to /api/random-flag-link');
 });
 
 // Middleware pour vérifier le cookie d'accès
