@@ -11,7 +11,7 @@ router.get('/', authMiddleware, (req, res) => {
 
   const randomPath = crypto.randomBytes(8).toString('hex');
   const flagPath = path.join(__dirname, '../public', randomPath);
-  const flagContent = 'FLAG{You_found_the_flag!}';
+  const flagContent = 'Santa cheers, \'Ho ho ho! You’ve saved Christmas by capturing the flag! Enjoy your reward: FLAG{Christmas_Magic_Found}. Have a merry holiday season, adventurer! 🎄🎁✨';
 
   // Create flag file if it doesn't exist
   if (!fs.existsSync(flagPath)) {
