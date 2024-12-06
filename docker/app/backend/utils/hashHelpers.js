@@ -8,7 +8,9 @@ const generateSalt = () => crypto.randomBytes(8).toString('hex');
 
 // Hash password using PBKDF2
 const hashPassword = (password, salt) => {
-  return crypto.pbkdf2Sync(password, salt, 100, 64, 'sha256').toString('hex');
+  return crypto.createHash('sha256')
+                .update(salt + password)
+                .digest('hex');
 };
 
 // Check if username exists in passwords.txt
@@ -23,10 +25,6 @@ const saveUser = (username, salt, hashedPassword) => {
   const userEntry = `${username}:${salt}:${hashedPassword}\n`;
   fs.appendFileSync(PASSWORD_FILE, userEntry);
 };
-
-//const signToken = (username) => {
-//return jwt.sign({ username }, SECRET_KEY, { expiresIn: '1h' }); // Set expiration time for security
-//}
 
 // Verify a password against stored credentials
 const verifyPassword = (username, password) => {
@@ -47,5 +45,4 @@ module.exports = {
   doesUserExist,
   saveUser,
   verifyPassword,
-  //signToken
 };
