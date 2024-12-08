@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    environment:
+      NODE_ENV: production
+      PORT: 8081
+      JWT_SECRET: CTFChristmasChallenge
+    volumes:
+      - ./flag_port.secret:/run/secrets/flag_port:ro

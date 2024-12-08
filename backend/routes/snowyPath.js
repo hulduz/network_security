@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const authMiddleware = require('../middlewares/auth')
-const PORT = 8081; // Replace with your actual port
+const PORT = 8081;
 
 
 router.get('/', authMiddleware, (req, res) => {

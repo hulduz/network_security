@@ -1,36 +1,58 @@
-# Capture the Flag Task: Vulnerable Web Server
+# 🎄 Network Security CTF Challenge
+Team: Bizou Bizou
 
-## 1. Why I Chose This Task
+## 🎁 Description
+The North Pole is buzzing with last-minute preparations, but disaster has struck: Santa’s magical servers are malfunctioning, threatening to ruin Christmas! 
 
-We chose this task because it is a classical example of web server vulnerabilities. It shows how simple misconfigurations can lead to attacks.
+Once you arrive to The North Pole, your mission will be to simply follow the instructions, where you will encounter various problems such as restricted accesses and finding the right port through clues. 
 
-## 2. Task Overview
+## 🎯 Level
+```easy```
+This challenge faces common cryptography and network security concerns.
 
-We implemented a Dockerized web server running Apache, with a hidden flag stored in a subdirectory. The access to the flag is protected by a cookie-base authentification, which needs to be bypassed to capture the flag.
+## 💻 Environment Setup
+Follow these steps to pull the Docker image from DockerHub and run it locally.
 
-## Getting Started
+---
 
-1. **Clone the Repository**:
-   Ensure you have the project files on your local machine. Clone the repository or navigate to the project directory.
+### **1. Pull the Docker Image**  
+```bash
+docker pull fredyy455/encrypted_holiday:latest
+```
 
-2. **Build and Run the Docker Container**:
-   Open your terminal and run the following commands to build and start the server:
+---
 
-   ```bash
-   docker build -t ctfproject .
-   docker run -p 8081:8081 ctfproject
+### **2. Run the Docker Container**  
+```bash
+docker run -d -p 8081:8081 fredyy455/encrypted_holiday:latest
+```
 
-## 3. Intended Attack Method
-To capture the flag, follow these steps:
+---
 
-1. **Identify the Path to the Flag**:
-   - Scan for hidden directories and files within the server with tools you can use on your bash.
+### **3. Verify the Running Container**  
+```bash
+docker ps
+```
+*Ensure the container is running correctly.*
 
-2. **Bypass Cookie-Based Authentication**:
-   - Inspect the web page source and cookies to determine the required cookie for flag access.
-   - Send a request with the necessary cookie header.
+---
 
-3. **Access the Flag**:
-   - If the path is correct and the cookie is valid, the server will respond with the contents of `flag.txt`, revealing the flag.
+### **4. Access the Application**  
+- Open your browser and navigate to:  
+  **`http://localhost:8081`**  
+---
+
+While solving this CTF, you may find the following tools helpful:
+
+- **Postman**: Great for testing APIs and making HTTP requests.
+- **A Network Scanner**: You might need something that helps you inspect ports and services.
+- **A Password Cracking Tool**: Consider using a wordlist to try common passwords
 
 
+## 🚩 Flag Format
+The format of the flag is FLAG{3ncrypt3d_H0liday}
+
+---
+
+
+Happy Hacking and Merry Christmas! 🎅🎄✨
